@@ -13,6 +13,8 @@ class SettleUp
   public
 
   def initialize(people)
+    @yaml = YAML.load_file('paid.yml')
+    setup_options
     @people = people
     @current_group = people.dup
     @payments = []
@@ -52,6 +54,11 @@ class SettleUp
 
   private
 
+  def setup_options
+    yaml = YAML.load_file('paid.yml')
+    @options = yaml['options'] || {}
+  end
+
   def name_size
     people.map(&:name).sort_by{|n| n.size}.pop.size
   end
@@ -61,9 +68,12 @@ class SettleUp
   end
 
   def pair_payment
-    smallest = current_group.delete_at(0)
+    smallest = current_group.first
     largest = current_group.last
-    payments << Payment.new(from: smallest, to: largest)
+    payments << Payment.new(from: smallest, to: largest, options: @options)
+    if smallest.balance > -1 && smallest.balance < 1
+      current_group.shift
+    end
     if largest.balance > -1 && largest.balance < 1
       current_group.pop
     end

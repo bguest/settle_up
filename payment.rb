@@ -1,7 +1,8 @@
 class Payment
   attr_reader :amount, :from, :to
 
-  def initialize(from:, to:)
+  def initialize(from:, to:, options:)
+    @owed_make_payments = options.fetch('allow_owed_to_make_payment'){ true }
     @from_person = from
     @to_person = to
     adjust_balances
@@ -18,9 +19,13 @@ class Payment
   private
 
   def adjust_balances
-    @amount = -@from_person.balance
+    if @owed_make_payments
+      @amount = -@from_person.balance
+    else
+      @amount = [-@from_person.balance, @to_person.balance].min
+    end
     @to_person.balance -= amount
-    @from_person.balance = 0
+    @from_person.balance += amount
   end
 
 end

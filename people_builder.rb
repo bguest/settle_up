@@ -10,7 +10,7 @@ class PeopleBuilder
   end
 
   def call
-    self.people = @yaml.map do |k,v|
+    self.people = @yaml['people'].map do |k,v|
       Person.new(name: k, paid: v)
     end
     set_inital_balance

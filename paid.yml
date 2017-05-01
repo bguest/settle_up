@@ -1,9 +1,16 @@
-ben:
-  - 58  # Beer
-  - 54  # Food
-carol: 71
-long: 1970
-masha: 211
-phil: 2214
-day: 0
-dan: 0
+options:
+  allow_owed_to_make_payment: false
+
+people:
+  ben:
+    - 58  # Beer
+    - 54  # Food
+  carol:
+    - 56  # Rum
+    - 25  # Rum
+    - 21  # Food
+  long: 1970
+  masha: 211
+  phil: 2214
+  day: 0
+  dan: 0

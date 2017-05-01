@@ -13,7 +13,13 @@ I figured I'd try to just write a script to do it...
 ## How to make it work
 
 Enter all the persons in you party and the amounts they payed in the paid.yml
-file. The payments can either be a single value or an array.
+file under people. The payments can either be a single value or an array.
+
+In the paid.yml specify if you want people who are owned money to make payments.
+Try this for both true and false if you want, set to false, people who owe money
+wont have to make any payments to other people, but you will end up with people
+who have to make multiple payments, set to false, you will get equal or less total payments,
+put people who are owed money may have to make paymennts.
 
 Then run:
 
