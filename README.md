@@ -1,7 +1,7 @@
 # Wat is this
 
 Normally when people go on vacation they might use splitwise.com to settle up
-at the end. However, my brother won't use splitwise because they won't let you
+at the end. However, my brother doesn't like use splitwise because they won't let you
 sign up with google without letting splitwise have access to your contacts. 
 
 Other times friends have refused to use splitwise because it's "too complicated",
